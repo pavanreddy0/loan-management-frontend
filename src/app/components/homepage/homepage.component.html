@@ -1,0 +1,31 @@
+<div class="flex justify-content-center align-items-center min-h-screen">
+  <p-card header="Register" [style]="{ width: '400px' }">
+    <form [formGroup]="loanForm" (ngSubmit)="checkEligibleForLoan()">
+      <div class="field">
+        <label for="loanAmount">Enter Loan Amount</label>
+        <input
+          pInputText
+          class="w-full"
+          id="loanAmount"
+          formControlName="loanAmount"
+        />
+        @if(loanAmount.invalid && (loanAmount.dirty || loanAmount.touched)){
+        <small class="block p-error">Loan Amount is required</small>
+        }
+      </div>
+      <p-button
+        type="submit"
+        label="Check Loan"
+        styleClass="w-full"
+        [disabled]="loanForm.invalid"
+      ></p-button>
+
+    </form>
+  </p-card>
+
+  <div class="justify-content-center align-content-center min-h-screen">
+    <p-button label="sign out" (onClick)="logOut()" />
+  </div>
+
+</div>
+
